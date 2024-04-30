@@ -1,0 +1,3 @@
+pip install telethon
+pip install pytz
+pip install configparser

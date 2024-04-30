@@ -1,0 +1,9 @@
+source ~/miniconda2/etc/profile.d/conda.sh
+conda activate py310
+#message_out 전송 message_json
+#sample.json 수집 결과 json
+
+#설치
+#pip install schematics
+#실행 
+#python message.py -jf {json file 경로}

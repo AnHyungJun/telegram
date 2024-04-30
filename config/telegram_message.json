@@ -1,0 +1,16 @@
+{
+    "spider_name": "telegram_crawler",
+    "project_name": "telegram_crawler",
+    "message": "",
+    "crawl_start_time": "",
+    "message_type": "SUCCESS",
+    "process_num":0,
+    "crawl_end_time": "",
+    "data_size": {"flag":"W","data":0,"error_range":"1/5"},
+    "response_count": {"flag":"N","data":0,"error_range":"1/5"},
+    "status_code": {},
+    "item_count": {"flag":"W","data":0,"error_range":"1/5"},
+    "log_error_count": 0,
+    "validation_error_list": []
+  }
+  

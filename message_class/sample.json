@@ -1,0 +1,16 @@
+{
+  "spider_name": "test",
+  "project_name": "test",
+  "message": "test message",
+  "crawl_start_time": "2022-02-05 15:11:11",
+  "message_type": "SUCCESS",
+  "process_num":0,
+  "crawl_end_time": "2022-02-07 09:11:11",
+  "data_size": {"flag":"W","data":1231234123,"error_range":"1/2"},
+  "response_count": {"flag":"W","data":456,"error_range":"1/2"},
+  "status_code": { "200": 3, "302": 5, "404": 11},
+  "item_count": {"flag":"W","data":333,"error_range":"1/2"},
+  "traceback_count": 3,
+  "log_error_count": 5,
+  "validation_error_list": ["item_error", "retry_error"]
+}
