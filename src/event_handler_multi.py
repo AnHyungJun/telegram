@@ -5,6 +5,7 @@ import json
 import sys
 import logging
 import os
+import asyncio
 import traceback
 from embedded_crawler import TelegramUrlProcessor
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -125,8 +126,7 @@ async def handler(event):
         file_path: str = await event.download_media(file=path)
         if ' ' in file_path:
           replace_file_path = file_path.replace(' ','_')
-          mv_command = f"mv '{file_path}' '{replace_file_path}'" 
-          os.system(mv_command)
+          os.rename(file_path, replace_file_path)
           file_path = replace_file_path
         file_name = file_path.split("/")[-1]
         message_dict['file_path'] = f"{save_dir}/{file_name}"
@@ -136,12 +136,12 @@ async def handler(event):
         message_dict['file_name'] = None
       channel_info: dict = channel_dict[message_dict['channel_id']]
       channel_info['crawl_message_id'] = message_dict['message_id']
-      embedded_urls, url_metadata = embedded_client.extract_urls_and_metadata(message_dict["message"])
+      embedded_urls, url_metadata = await asyncio.to_thread(embedded_client.extract_urls_and_metadata, message_dict["message"])
       message_dict["embedded_urls"] = embedded_urls
       message_dict["url_metadata"] = url_metadata
       message_file.write(json.dumps(message_dict,ensure_ascii=False)+'\n')
       rotation_logger.info(message_dict)
-      r = kafka_client.send_kafka(message_dict)
+      await asyncio.to_thread(kafka_client.send_kafka, message_dict)
       #rotation_logger.info(r)
       
       if tmp_day != cur_day:
@@ -159,10 +159,7 @@ async def handler(event):
   except Exception as e:
     rotation_logger.error('ERROR MESSAGE')
     rotation_logger.error(event.chat_id)
-    #t = await extract_from(event)
-    #rotation_logger.error(t)
     rotation_logger.error(traceback.format_exc())
-    raise Exception('ERROR MESSAGE')
 
 
 #atexit.register(_close())
