@@ -10,7 +10,7 @@ session_file: str = 'my_session.session'
 
 # 채널 URL 또는 username 목록
 channel_list = list()
-with open('./etc/channel_list.txt') as f:
+with open('./etc/join/t.txt') as f:
     for line in f:
         channel_list.append(line.strip())
 async def join_channels(client: TelegramClient) -> None:
@@ -26,7 +26,7 @@ async def join_channels(client: TelegramClient) -> None:
                 await client(JoinChannelRequest(entity))
             except Exception as e:
                 print (f'ERROR {channel_url} : {e}')
-            time.sleep(20)
+            time.sleep(60)
     except Exception as e:
         print(f"Error: {e}")
 

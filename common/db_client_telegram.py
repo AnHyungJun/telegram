@@ -90,8 +90,8 @@ if __name__ == "__main__":
     #db_config_file = sys.argv[1]
     b: TelegramDBClient = TelegramDBClient()
     
-    with open(f"{ROOT_DIR}/etc/channel_info.{datetime.now().strftime('%Y%m%d%H%M%S')}.json",'w') as f:
-        f.write(json.dumps(b.select_channel_info(),ensure_ascii=False))
+    #with open(f"{ROOT_DIR}/etc/channel_info.{datetime.now().strftime('%Y%m%d%H%M%S')}.json",'w') as f:
+    #    f.write(json.dumps(b.select_channel_info(),ensure_ascii=False))
     
     #print (query)
     b._close()

@@ -28,7 +28,7 @@ class BaseMessageClass(object):
         return message_item
     
     #api서버에 메세지 send
-    def send_messege(self) -> None:
+    def send_message(self) -> None:
         json_item = self.get_message()
         response = requests.post(API_URL,data=json.dumps(json_item))
         return response
@@ -64,13 +64,24 @@ class BaseMessageClass(object):
             }
         self.message_item = self.create_message(item)
     
+    def send_error_message(self,message,change_item={}):
+        self.set_value('message',message)
+        self.set_value('message_type','ERROR')
+        self.set_value('crawl_end_time',datetime.now())
+        for k,v in change_item.items():
+            self.set_value(k,v)
+        self.send_message()
+    
     def __del__(self):
         #message 파일 저장
         pass
         #save_dir:str = 'message_out'
         #file_name:str = f'test_message_{self.cur_day}.json'
         #util.json_save_file(save_dir,file_name,self.get_message())
-
+    
+    def print_json_message(self,item:dict) -> None:
+        print(json.dumps(item,indent=4))
+    
 class TotalMessageClass(BaseMessageClass):
     
     
@@ -88,6 +99,8 @@ class TotalMessageClass(BaseMessageClass):
         return elapsed_time.total_seconds()
         
 
+
+
 if __name__ == "__main__":
     logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
     parser = argparse.ArgumentParser()
@@ -95,18 +108,18 @@ if __name__ == "__main__":
     args = parser.parse_args()
     with open(args.json_file) as f:
         item = json.loads(f.read().strip())
-    #message = TotalMessage(item)
-    message = BaseMessageClass(item)
+    message = TotalMessageClass(item)
+    #message = BaseMessageClass(item)
     #수집 시간 계산 (TotalMessage)
-    #elapsed_time = message.get_elapsed_time()
+    elapsed_time = message.get_elapsed_time()
     #수집 시간 message data set
-    #message.set_value('elapsed_time',elapsed_time)
+    message.set_value('elapsed_time',elapsed_time)
     
     #message class print
-    util.print_json_message(message.get_message())
+    message.print_json_message(message.get_message())
     
     #api 서버로 데이터 str 전송
-    logging.info(message.send_messege().text)
+    logging.info(message.send_message().text)
 
 
 

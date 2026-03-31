@@ -1,3 +1,6 @@
+pip install pymysql
+pip install cx_Oracle
+pip install schematics
 pip install telethon
 pip install pytz
 pip install configparser

@@ -10,7 +10,6 @@
   "response_count": {"flag":"W","data":456,"error_range":"1/2"},
   "status_code": { "200": 3, "302": 5, "404": 11},
   "item_count": {"flag":"W","data":333,"error_range":"1/2"},
-  "traceback_count": 3,
   "log_error_count": 5,
   "validation_error_list": ["item_error", "retry_error"]
 }

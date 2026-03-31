@@ -34,11 +34,11 @@ async def extract_from(message) -> dict:
     # 원 채널 username
     message_dict['forward_from_channel_username'] = message.forward.chat.username
     message_dict['forward_from_message_id'] = message.forward.channel_post
+    
   else:
     message_dict['forward_from_channel_id'] = None
     message_dict['forward_from_channel_title'] = None
     message_dict['forward_from_channel_username'] = None
-    message_dict['forward_from_message_id'] = None
   
   
   # 메시지 링크
