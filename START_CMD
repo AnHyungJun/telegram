@@ -1,0 +1,5 @@
+rm 3058.log 3086.log 2704.log
+nohup ./run_telegram_crawler.sh start 1030860134 &> 3086.log &
+nohup ./run_telegram_crawler.sh start 1030580134 &> 3058.log &
+nohup ./run_telegram_crawler.sh start 1027045317 &> 2704.log &
+rm 3058.log 3086.log 2704.log

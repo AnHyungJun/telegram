@@ -24,9 +24,9 @@ import atexit
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
 # Credentials
-api_id = '27991267'
-api_hash = '8dcb75ad0d21fb82c82cd86e7cf33581'
-client: TelegramClient = TelegramClient('3086.session', api_id, api_hash)
+api_id = '38771807'
+api_hash = 'faec540c7d18c50b29a5aa891f66b26a'
+client: TelegramClient = TelegramClient('2704.session', api_id, api_hash)
 embedded_client: TelegramUrlProcessor = TelegramUrlProcessor()
 # api_id = '27991267'
 # api_hash = '8dcb75ad0d21fb82c82cd86e7cf33581'

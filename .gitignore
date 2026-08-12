@@ -15,6 +15,7 @@ build/
 develop-eggs/
 dist/
 # downloads/
+etc/channel_list*
 eggs/
 .eggs/
 lib/
