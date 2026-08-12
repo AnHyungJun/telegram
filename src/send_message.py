@@ -4,7 +4,6 @@ import sys
 import os
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 ROOT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
-COMMON_DIR = os.path.abspath(os.path.join(ROOT_DIR, "common"))
 sys.path.insert(0, os.path.abspath(ROOT_DIR))
 
 

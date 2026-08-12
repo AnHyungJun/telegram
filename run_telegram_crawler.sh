@@ -12,7 +12,7 @@ user_key=$2
 if [ "$1" == "start" ]; then
     while true
     do
-        python3 src/event_handler_multi.py $user_key
+        python3 src/telegram_crawler.py $user_key
         #error_log
         #remove_log "$cur_dir/log/telegram.log.$user_key.*" 30
         #python common/db_client_telegram.py 
@@ -23,7 +23,7 @@ elif [ "$1" == "stop" ]; then
     shell_pid=`ps -ef | grep "run_telegram_crawler.sh start $user_key"| grep -v color | awk '{print $2}'`
     echo $shell_pid
     kill -9 $shell_pid
-    event_pid=`ps -ef | grep "event_handler_multi.py $user_key" | grep -v color | awk '{print $2}'`
+    event_pid=`ps -ef | grep "telegram_crawler.py $user_key" | grep -v color | awk '{print $2}'`
     echo $event_pid
     kill -9 $event_pid
 else
